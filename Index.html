@@ -1,0 +1,92 @@
+<body>
+    <header>
+        <div class="logo">
+            <h1>Hotel Paradise</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#facturacion">Facturación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="productos">
+        <h2>Servicios del Hotel</h2>
+        <div class="grid">
+            <!-- Producto 1 -->
+            <div class="product">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/01/82/30/estanda-queen.jpg?w=1200&h=-1&s=1" alt="Habitación Estándar">
+                <div class="product-info">
+                    <h3>Habitación Estándar</h3>
+                    <p>$50 por noche</p>
+                    <div class="quantity-control">
+                        <button type="button" class="decrement">-</button>
+                        <input type="number" class="service" data-name="Habitación Estándar" data-price="50" value="0" min="0">
+                        <button type="button" class="increment">+</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIJx0E-Ht9Z8oo8dZscPWyVlaTU7_6zHlR-w&s" alt="Habitación Deluxe">
+                <div class="product-info">
+                    <h3>Habitación Deluxe</h3>
+                    <p>$100 por noche</p>
+                    <div class="quantity-control">
+                        <button type="button" class="decrement">-</button>
+                        <input type="number" class="service" data-name="Habitación Deluxe" data-price="100" value="0" min="0">
+                        <button type="button" class="increment">+</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="product">
+                <img src="https://s3.amazonaws.com/static-webstudio-accorhotels-usa-1.wp-ha.fastbooking.com/wp-content/uploads/sites/19/2022/03/11175445/DUF_7063-v-ok-1170x780.jpg" alt="Suite Presidencial">
+                <div class="product-info">
+                    <h3>Suite Presidencial</h3>
+                    <p>$200 por noche</p>
+                    <div class="quantity-control">
+                        <button type="button" class="decrement">-</button>
+                        <input type="number" class="service" data-name="Suite Presidencial" data-price="200" value="0" min="0">
+                        <button type="button" class="increment">+</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 4 -->
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMBKU99xFOSss0wrEsAVd144uBRoH-fG0yiA&s" alt="Spa">
+                <div class="product-info">
+                    <h3>Servicio de Spa</h3>
+                    <p>$30 por sesión</p>
+                    <div class="quantity-control">
+                        <button type="button" class="decrement">-</button>
+                        <input type="number" class="service" data-name="Spa" data-price="30" value="0" min="0">
+                        <button type="button" class="increment">+</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 5 -->
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4S3i0Vv04eORM_5HpLDY87XJjBvgevpDzYA&s" alt="Restaurante">
+                <div class="product-info">
+                    <h3>Restaurante</h3>
+                    <p>$20 por comida</p>
+                    <div class="quantity-control">
+                        <button type="button" class="decrement">-</button>
+                        <input type="number" class="service" data-name="Restaurante" data-price="20" value="0" min="0">
+                        <button type="button" class="increment">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="total">
+            <h3>Total: $<span id="totalPrice">0</span></h3>
+            <button id="checkoutButton">Pagar con WhatsApp</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
