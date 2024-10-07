@@ -1,0 +1,200 @@
+/* General styles */
+body { 
+    font-family: Arial, sans-serif;
+    background-color: #f0e6d6;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #37474f;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+    text-align: center;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff6f61;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 19.5 / 9;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-info h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #37474f;
+}
+
+.product-info p {
+    color: #888;
+    font-size: 1rem;
+}
+
+/* Updated styles for quantity control */
+.quantity-control {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between buttons and input */
+    margin-top: 10px; /* Add some spacing above */
+}
+
+/* Fixed dimensions for increment and decrement buttons */
+button {
+    padding: 10px; /* Inner padding */
+    width: 40px; /* Fixed width for buttons */
+    height: 40px; /* Fixed height for buttons */
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Make buttons circular */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffc107;
+}
+
+/* Fixed dimensions for input field */
+input[type="number"] {
+    width: 80px; /* Fixed width */
+    height: 40px; /* Fixed height to match buttons */
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 1.1rem;
+    background-color: #f9f9f9;
+    color: #333333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+input[type="number"]:hover {
+    background-color: #fff;
+    border-color: #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+input[type="number"]:focus {
+    border-color: #ff6f61;
+    background-color: #fff;
+    box-shadow: 0 6px 14px rgba(255, 111, 97, 0.3);
+    transform: scale(1.05);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+#total {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #ff6f61;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#checkoutButton {
+    display: none;
+    background-color: #25d366; /* Verde de WhatsApp */
+    color: white;
+     padding: 10px; /* Inner padding */
+    width: 200px; /* Fixed width for buttons */
+    height: 70px; /* Fixed height for buttons */
+    border: none;
+    border-radius: 100px; /* Make buttons circular */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+#checkoutButton:hover {
+    background-color: #20c157; /* Color más oscuro al pasar el ratón */
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    h3, p {
+        font-size: 1rem;
+    }
+
+    button {
+        width: 40px; /* Ensure buttons keep fixed width */
+        height: 40px; /* Ensure buttons keep fixed height */
+    }
+
+    input[type="number"] {
+        width: 80px; /* Ensure input keeps fixed width */
+        height: 40px; /* Ensure input keeps fixed height */
+    }
+}
