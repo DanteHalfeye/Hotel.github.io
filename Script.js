@@ -1,68 +1,64 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const inputs = document.querySelectorAll('.service');
+    // Initialize the cart from localStorage if it exists, or as an empty array if it doesn't
+    let cart = JSON.parse(localStorage.getItem('hotelCart')) || [];
 
-    // Add event listeners to increment and decrement buttons
+    // Function to update the cart in localStorage and UI
+    function updateCart(input) {
+        const name = input.dataset.name;
+        const price = parseInt(input.dataset.price);
+        const quantity = parseInt(input.value);
+        const image = input.dataset.image;  // Get the image URL from data attribute
+
+        // Find the item in the cart, if it exists
+        const existingItemIndex = cart.findIndex(item => item.name === name);
+        if (existingItemIndex !== -1) {
+            if (quantity > 0) {
+                cart[existingItemIndex].quantity = quantity;  // Update quantity in cart
+            } else {
+                cart.splice(existingItemIndex, 1);  // Remove item if quantity is 0
+            }
+        } else if (quantity > 0) {
+            // Add new item to the cart
+            cart.push({ name, price, quantity, image });  // Include image in cart item
+        }
+
+        // Save the updated cart to localStorage
+        localStorage.setItem('hotelCart', JSON.stringify(cart));
+
+        // Update the total price in UI
+        calculateTotal();
+    }
+
+    // Increment quantity when "+" button is clicked
     document.querySelectorAll('.increment').forEach(button => {
         button.addEventListener('click', function () {
-            const input = button.previousElementSibling; // Get the corresponding input
-            input.value = parseInt(input.value) + 1; // Increment the value
-            calculateTotal(); // Recalculate total
+            const input = button.previousElementSibling;  // Get the related input field
+            input.value = parseInt(input.value) + 1;  // Increment value
+            updateCart(input);  // Update the cart and localStorage
         });
     });
 
+    // Decrement quantity when "-" button is clicked
     document.querySelectorAll('.decrement').forEach(button => {
         button.addEventListener('click', function () {
-            const input = button.nextElementSibling; // Get the corresponding input
-            const currentValue = parseInt(input.value) || 0; // Get current value
+            const input = button.nextElementSibling;  // Get the related input field
+            const currentValue = parseInt(input.value) || 0;
             if (currentValue > 0) {
-                input.value = currentValue - 1; // Decrement the value
-                calculateTotal(); // Recalculate total
+                input.value = currentValue - 1;  // Decrement value
+                updateCart(input);  // Update the cart and localStorage
             }
         });
     });
 
-    // Add event listener to each input for automatic total calculation
-    inputs.forEach(input => {
-        input.addEventListener('input', calculateTotal);
-    });
-
-    // Total calculation function
+    // Function to calculate total price for the cart
     function calculateTotal() {
-        const inputs = document.querySelectorAll('.service');
         let total = 0;
-        const items = [];
-
-        inputs.forEach(input => {
-            const quantity = parseInt(input.value) || 0; // Handle NaN by defaulting to 0
-            const price = parseInt(input.dataset.price) || 0; // Handle NaN for price
-            const name = input.dataset.name;
-
-            if (quantity > 0) {
-                const itemTotal = quantity * price;
-                total += itemTotal;
-                items.push(`${name} (x${quantity}) - $${itemTotal}`);
-            }
+        cart.forEach(item => {
+            total += item.quantity * item.price;
         });
-
-        // Update total price in the DOM
         document.getElementById('totalPrice').textContent = total.toFixed(2);
-
-        const checkoutButton = document.getElementById('checkoutButton');
-        if (total > 0) {
-            checkoutButton.style.display = 'inline-block';
-            checkoutButton.onclick = () => sendWhatsAppMessage(items, total);
-        } else {
-            checkoutButton.style.display = 'none';
-        }
     }
 
-    // Send WhatsApp message function
-    function sendWhatsAppMessage(items, total) {
-        const number = '573222921728'; // Replace with the actual hotel WhatsApp number
-        const message = `Hola, quiero hacer una reserva con los siguientes detalles:%0A%0A${items.join('%0A')}%0A%0ATotal: $${total.toFixed(2)}%0A%0AEl pago lo haré en efectivo`;
-        const whatsappURL = `https://wa.me/${number}?text=${message}`; 
-
-        // Open WhatsApp chat in a new window/tab
-        window.open(whatsappURL, '_blank');
-    }
+    // Initialize total price calculation
+    calculateTotal();
 });

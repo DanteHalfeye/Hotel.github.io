@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Hotel Paradise</title>
+    <link rel="stylesheet" href="cartStyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Hotel Paradise</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="cart.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="cart">
+        <h2>Carrito de Compras</h2>
+        <div id="cart-items">
+            <!-- Example cart item -->
+            <div class="cart-items">
+                <div class="cart-item-content">
+                    <!-- Image on the left -->
+                    <img src="path-to-image/room.jpg" alt="Room" class="item-image">
+                    <!-- Item details in the center -->
+                    <div class="item-details">
+                        <p>Deluxe Room (x2) - $300.00</p>
+                    </div>
+                    <!-- Button on the right -->
+                    <button class="erase-item">Eliminar 1</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cart-total">
+            <h3>Total: $<span id="totalPrice">0</span></h3>
+        </div>
+
+        <button id="checkoutButton">Pagar con WhatsApp</button>
+    </section>
+
+    <script src="cartScript.js"></script>
+</body>
+</html>
